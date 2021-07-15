@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 3. Почему код дает именно такие результаты?
+        // var a = 1, b = 1, c, d;
+        // c = ++a; alert(c);           // 2 c = 1 + a
+        // d = b++; alert(d);           // 1 возвращает первоначальное число, потом идет сложение
+        // c = (2 + ++a); alert(c);      // 5 так как в перввом примере было присвоено "а" число 2
+        // d = (2 + b++); alert(d);      // 4 во втором примере было присвоено b число 2, 4 потому что идет сложение(b++) но показывает первоначальное число
+        // alert(a);                    // 3 т.к выше было два раза присвоение по 1 к числу a
+        // alert(b);                    // 3 т.к выше было два раза присвоение по 1 к числу b
+
+
+        //    2. Чему будет равен x?
+        var a = 2;
+        var x = 1 + (a *= 2); // x = 5, действие сначала происходят в скобках из-за высшего приоритета, 2 * 2 = 4 + 1
+
+        // 3. Объявить две целочисленные переменные — a и b и задать им произвольные начальные значения. Затем написать скрипт, который работает по следующему принципу:
+        var a = 5;
+        var b = 3;
+        if (a > 0 && b > 0) {
+            x = a - b;
+        } else if (a < 0 && b < 0) {
+            x = a * b;
+        }
+        else if (a > 0 && b < 0 || a < 0 && b > 0) {
+            x = a + b;
+        }
+
+        // 4. Присвоить переменной а значение в промежутке [0..15]. С помощью оператора switch организовать вывод чисел от a до 15.
+        var a = 9;
+        switch (a) {
+            case 1: console.log("Один");
+            case 2: console.log("Два");
+            case 3: console.log("Три");
+            case 4: console.log("Четыре");
+            case 5: console.log("Пять");
+            case 6: console.log("Шесть");
+            case 7: console.log("Семь");
+            case 8: console.log("Восемь");
+            case 9: console.log("Девять");
+            case 10: console.log("Десять");
+            case 11: console.log("Одиннадцать");
+            case 12: console.log("Двенадцать");
+            case 13: console.log("Тринадцать");
+            case 14: console.log("Четырнадцать");
+            case 15: console.log("Пятнадцать");
+            default: console.log("Неопознанный летающий обьект")
+        }
+
+
+        // 5. Реализовать четыре основные арифметические операции в виде функций с двумя параметрами. Обязательно использовать оператор return
+
+        function plus(x, y) {
+            return x + y;
+        }
+        function minus(x, y) {
+            return x - y;
+        }
+        function multiplication(x, y) {
+            return x * y;
+        }
+        function division(x, y) {
+            return x / y;
+        }
+
+
+        // 6. Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation), где arg1, arg2 — значения аргументов, operation — строка с названием операции. В зависимости от переданного значения выполнить одну из арифметических операций (использовать функции из пункта 5) и вернуть полученное значение (применить switch).
+        function mathOperation(x, y, minus) {
+            switch (minus) {
+                case 'plus':
+                    return x + y;
+                case 'minus':
+                    return x - y;
+                case 'division':
+                    return x / y;
+                case 'multiplication':
+                    return x * y;
+            }
+        }
+        mathOperation(10, 5);
+
+        // 7. * Сравнить null и 0. Объяснить результат.
+        // Прочитал, вроде как понял, но обьяснить словами новичка не смогу
+
+
+    </script>
+</body>
+
+</html>
