@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="catalog">
+    </div>
+
+    <div class="basket-list"></div>
+    <script>
+        const basketItem = {
+            render(good) {
+                return `<div class="good">
+                    <div><b>Наименование</b>: ${good.product}</div>
+                    <div><b>Цена за шт.</b>: ${good.price}</div>
+                    <div><b>Количество</b>: ${good.quantity}</div>
+                    <div><b>Стоимость</b>: ${good.quantity * good.price}</div>
+                </div>`;
+            }
+        }
+
+        const basket = {
+            basketListBlock: null,
+            basketItem,
+            goods: [
+                {
+                    product: "Кофта",
+                    price: 3000,
+                    quantity: 3
+                },
+                {
+                    product: "Штаны",
+                    price: 5000,
+                    quantity: 1
+                },
+            ],
+            init() {
+                this.basketListBlock = document.querySelector('.basket-list');
+                this.render();
+            },
+            render() {
+                if (this.goods.length) {
+                    this.goods.forEach(good => {
+                        this.basketListBlock.insertAdjacentHTML('beforeend', this.basketItem.render(good));
+                    });
+                    this.basketListBlock.insertAdjacentHTML('beforeend', `В корзине ${this.goods.length} позиций(я) стоимостью ${this.countBasketPrice()}`);
+                } else {
+                    this.basketListBlock.textContent = 'Корзина пуста';
+                }
+            },
+            countBasketPrice() {
+                return this.goods.reduce(function (price, good) {
+                    return price + good.price * good.quantity;
+                }, 0);
+            },
+        };
+
+        basket.init();
+
+    </script>
+
+</body>
+
+</html>
